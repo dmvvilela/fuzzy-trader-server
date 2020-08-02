@@ -48,4 +48,15 @@ router.route("/:id").delete((req, res) => {
     .catch((err) => res.status(400).json("error: " + err));
 });
 
+router.route("/reset").post((req, res) => {
+  Asset.find()
+    .then((assets) => {
+      assets.forEach(async (asset) => {
+        await Asset.findByIdAndDelete(asset._id);
+        res.json("Assets deleted.");
+      });
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 module.exports = router;
