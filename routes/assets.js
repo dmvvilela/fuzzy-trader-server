@@ -17,9 +17,10 @@ router.route("/add").post((req, res) => {
   const code = req.body.code;
   const name = req.body.name;
   const type = req.body.type;
+  const amount = req.body.amount;
   const value = req.body.value;
   const date = new Date();
-  const newAsset = new Asset({ code, name, type, value, date });
+  const newAsset = new Asset({ code, amount, name, type, value, date });
 
   newAsset
     .save()
@@ -33,6 +34,7 @@ router.route("/update/:id").post((req, res) => {
       // asset.code = req.body.code;
       // asset.name = req.body.name;
       // asset.type = req.body.type;
+      asset.amount = Number(req.body.amount) + asset.amount;
       asset.value = Number(req.body.value) + asset.value;
       asset.date = new Date();
 

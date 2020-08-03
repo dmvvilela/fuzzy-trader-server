@@ -13,13 +13,18 @@ const assetSchema = new Schema(
     },
     name: {
       type: String,
+      required: true,
     },
     type: {
       type: String,
       required: true,
     },
     value: {
-      type: Number,
+      type: Number, // Valor inicial em U$ investido.
+      required: true,
+    },
+    amount: {
+      type: Number, // Quantidade de ações ou criptomoedas investidas.
       required: true,
     },
     date: {
