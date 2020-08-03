@@ -4,9 +4,15 @@ const Schema = mongoose.Schema;
 
 const assetSchema = new Schema(
   {
-    name: {
+    code: {
       type: String,
       required: true,
+      unique: true,
+      trim: true,
+      minlength: 3,
+    },
+    name: {
+      type: String,
       unique: true,
       trim: true,
       minlength: 3,
