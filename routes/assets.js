@@ -30,10 +30,10 @@ router.route("/add").post((req, res) => {
 router.route("/update/:id").post((req, res) => {
   Asset.findById(req.params.id)
     .then((asset) => {
-      asset.code = req.body.code;
-      asset.name = req.body.name;
-      asset.type = req.body.type;
-      asset.value = Number(req.body.value);
+      // asset.code = req.body.code;
+      // asset.name = req.body.name;
+      // asset.type = req.body.type;
+      asset.value = Number(req.body.value) + asset.value;
       asset.date = new Date();
 
       asset
@@ -55,7 +55,7 @@ router.route("/reset").post((req, res) => {
     .then((assets) => {
       assets.forEach(async (asset) => {
         await Asset.findByIdAndDelete(asset._id);
-        res.json("Assets deleted.");
+        // res.json("Assets deleted.");
       });
     })
     .catch((err) => res.status(400).json("Error: " + err));
