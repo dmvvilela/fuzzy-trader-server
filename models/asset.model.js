@@ -13,9 +13,6 @@ const assetSchema = new Schema(
     },
     name: {
       type: String,
-      unique: true,
-      trim: true,
-      minlength: 3,
     },
     type: {
       type: String,
